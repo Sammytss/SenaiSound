@@ -1,0 +1,61 @@
+﻿@page "/CadastrarArtista"
+@inject ArtistaAPI artistaAPI
+@inject NavigationManager navigationManager
+<PageTitle>Cadastrar Artista</PageTitle>
+
+<MudText Typo="Typo.h3" Align="Align.Center">Cadastrar Artista</MudText>
+<MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+	<MudTextField T="string" Label="Nome Do Artista"
+				  Required="true"
+				  @bind-Value="nome"
+				  RequiredError="Nome do artista é obrigatório!!" />
+	<MudTextField T="string" Label="Biografia do artista"
+				  Required="true"
+				  @bind-Value="biografia"
+				  RequiredError="Email is required!" Lines="3" />
+
+	<div class="d-flex align-center justify-space-between">
+		<MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+			<ActivatorContent>
+				<MudFab Color="Color.Secondary"
+						StartIcon="@Icons.Material.Filled.Image"
+						Label="Foto de Perfil" />
+			</ActivatorContent>
+		</MudFileUpload>
+		<MudButton Variant="Variant.Filled"
+				   @onclick="Cadastrar"
+				   Color="Color.Success" Class="ml-auto">Registrar</MudButton>
+	</div>
+</MudForm>
+@code {
+	private string? nome;
+	private string? biografia;
+	private string? fotoPerfil;
+	private string? fileImage;
+
+	private async Task Cadastrar()
+	{
+		var request = new ArtistaRequest(nome!, biografia!, fotoPerfil);
+		await artistaAPI.AddArtistaAsync(request);
+		navigationManager.NavigateTo("/MostrarArtistas");
+	}
+	bool success;
+	string[] errors = { };
+	MudForm form;
+	IList<IBrowserFile> _files = new List<IBrowserFile>();
+	private async Task UploadFiles(IBrowserFile file)
+	{
+		long maxFileSize = 1024 * 1024 * 15;
+		var format = "image/jpeg";
+		var resizedImage = await file.RequestImageFileAsync(format, 200, 200);
+
+		using var fileStream = resizedImage.OpenReadStream();
+		using var memoryStream = new MemoryStream();
+		await fileStream.CopyToAsync(memoryStream);
+
+		var imageUpload = Convert.ToBase64String(memoryStream.ToArray());
+		fileImage = $"data:{format};base64,{imageUpload}";
+		fotoPerfil = imageUpload;
+
+	}
+}

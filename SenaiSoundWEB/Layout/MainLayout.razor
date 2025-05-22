@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider IsDarkMode="true" Theme="currentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+	<MudAppBar Color="Color.Surface" Fixed="true" Elevation="2">
+		<MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => ToggleDrawer())" />
+		<MudImage Src="imagens/SenaiSoundDrk.png"></MudImage>
+	</MudAppBar>
+	<MudDrawerContainer Class="mud-height-full">
+		<MudDrawer @bind-Open="@_open" Fixed="false" Elevation="1" Variant="@DrawerVariant.Mini" OpenMiniOnHover="true">
+			<NavMenu></NavMenu>
+		</MudDrawer>
+		<MudMainContent class="main-content pa-10">
+			@Body
+		</MudMainContent>
+	</MudDrawerContainer>
+</MudLayout>
+
+@code {
+	private MudTheme currentTheme = new MudTheme()
+		{
+			PaletteDark = SenaiSoundPalleta.CreatePallete
+		};
+	private bool _open = false;
+
+	private void ToggleDrawer()
+	{
+		_open = !_open;
+	}
+}

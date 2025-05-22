@@ -1,0 +1,27 @@
+﻿@page "/MostrarArtistas"
+@inject ArtistaAPI artistaAPI
+<PageTitle>Artistas</PageTitle>
+
+<MudText Typo="Typo.h3" Align="Align.Center">Artistas</MudText>
+@if (artistas is not null)
+{
+	<MudGrid Justify="Justify.Center">
+		@foreach (var artista in artistas)
+		{
+			<MudItem xs="3">
+					<CardArtista Artista="artista"/>
+			</MudItem>
+		}
+	</MudGrid>
+}
+
+
+
+@code {
+	private ICollection<ArtistaResponse>? artistas;
+	protected override async Task OnInitializedAsync()
+	{
+		artistas = await artistaAPI.GetArtistasAsync();
+	}
+
+}

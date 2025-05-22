@@ -1,0 +1,99 @@
+﻿@page "/EditarArtista/{NomeArtista}"
+@inject ArtistaAPI artistaAPI
+@inject NavigationManager navigationManager
+
+<PageTitle>Detalhes do Artista</PageTitle>
+
+<MudText Typo="Typo.h3" Align="Align.Center">Artista</MudText>
+<MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+	<MudTextField T="string" Label="Nome Do Artista"
+				  Required="true"
+				  @bind-Value="nome"
+				  RequiredError="Nome do artista é obrigatório!!" />
+	<MudTextField T="string" Label="Biografia do artista"
+				  Required="true"
+				  @bind-Value="biografia"
+				  RequiredError="Email is required!" Lines="3" />
+
+
+	<MudGrid>
+		<MudItem xs="9">
+			<MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+				<ActivatorContent>
+					<MudFab Color="Color.Success"
+							StartIcon="@Icons.Material.Filled.Image"
+							Label="Foto de Perfil" />
+				</ActivatorContent>
+			</MudFileUpload>
+		</MudItem>
+		<MudItem xs="3">
+			<MudButton Variant="Variant.Filled"
+					   Color="Color.Warning"
+					   StartIcon="@Icons.Material.Filled.Save"
+					   Class="ml-auto"
+					   @onclick="Editar">
+				Salvar
+			</MudButton>
+
+			<MudButton Variant="Variant.Filled"
+					   @onclick="Deletar"
+					   Color="Color.Error" Class="ml-auto"
+					   StartIcon="@Icons.Material.Filled.Delete">
+				Deletar
+			</MudButton>
+		</MudItem>
+
+
+	</MudGrid>
+</MudForm>
+@code {
+	private string? nome;
+	private string? biografia;
+	private string? fotoPerfil;
+	private string? fileImage;
+
+	[Parameter]
+	public string? NomeArtista { get; set; }
+	public ArtistaResponse? Artista { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		Artista = await artistaAPI.GetArtistaPorNomeAsync(NomeArtista!);
+		nome = Artista!.Nome;
+		biografia = Artista!.Bio;
+		fotoPerfil = Artista!.FotoPerfil;
+	}
+	private async Task Editar()
+	{
+		var requestEdit = new ArtistaRequestEdit(Artista!.Id, nome!, biografia!, fotoPerfil!);
+		await artistaAPI.UpdateArtistaAsync(requestEdit);
+		navigationManager.NavigateTo("/MostrarArtistas");
+	}
+
+	private async Task Deletar()
+	{
+		await artistaAPI.DeleteArtistaAsync(Artista!.Id);
+		navigationManager.NavigateTo("/MostrarArtistas");
+	}
+
+	bool success;
+	string[] errors = { };
+	MudForm form;
+	IList<IBrowserFile> _files = new List<IBrowserFile>();
+	private async Task UploadFiles(IBrowserFile file)
+	{
+		long maxFileSize = 1024 * 1024 * 15;
+		var format = "image/jpeg";
+		var resizedImage = await file.RequestImageFileAsync(format, 200, 200);
+
+		using var fileStream = resizedImage.OpenReadStream();
+		using var memoryStream = new MemoryStream();
+		await fileStream.CopyToAsync(memoryStream);
+
+		var imageUpload = Convert.ToBase64String(memoryStream.ToArray());
+		fileImage = $"data:{format};base64,{imageUpload}";
+		fotoPerfil = imageUpload;
+
+	}
+}
+

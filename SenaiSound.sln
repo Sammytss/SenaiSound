@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenaiSoundSql", "SenaiSoundSql\SenaiSoundSql.csproj", "{C0D064B0-8354-4FEB-8FA9-DFC902B8CB02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenaiSoundWEB", "SenaiSoundWEB\SenaiSoundWEB.csproj", "{96489242-D1DE-4669-9677-96908AB138ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenaiSoundAPI", "SenaiSoundAPI\SenaiSoundAPI.csproj", "{3E4664AC-C8E2-4FD9-9BA5-070CA1C8A9C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenaiSound.Shared.Modelos", "SenaiSound.Shared.Modelos\SenaiSound.Shared.Modelos.csproj", "{C30088BE-A3C4-4AB8-B752-5086B4E17DFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaneiSound.Shared.Dados", "SaneiSound.Shared.Dados\SaneiSound.Shared.Dados.csproj", "{D2A636A2-65BA-4111-8BCE-A96F7952A589}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0D064B0-8354-4FEB-8FA9-DFC902B8CB02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D064B0-8354-4FEB-8FA9-DFC902B8CB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D064B0-8354-4FEB-8FA9-DFC902B8CB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D064B0-8354-4FEB-8FA9-DFC902B8CB02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96489242-D1DE-4669-9677-96908AB138ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96489242-D1DE-4669-9677-96908AB138ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96489242-D1DE-4669-9677-96908AB138ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96489242-D1DE-4669-9677-96908AB138ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E4664AC-C8E2-4FD9-9BA5-070CA1C8A9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E4664AC-C8E2-4FD9-9BA5-070CA1C8A9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E4664AC-C8E2-4FD9-9BA5-070CA1C8A9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E4664AC-C8E2-4FD9-9BA5-070CA1C8A9C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30088BE-A3C4-4AB8-B752-5086B4E17DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30088BE-A3C4-4AB8-B752-5086B4E17DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30088BE-A3C4-4AB8-B752-5086B4E17DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30088BE-A3C4-4AB8-B752-5086B4E17DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A636A2-65BA-4111-8BCE-A96F7952A589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A636A2-65BA-4111-8BCE-A96F7952A589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A636A2-65BA-4111-8BCE-A96F7952A589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A636A2-65BA-4111-8BCE-A96F7952A589}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E5C6FEB-8E70-48E6-A0F0-4AF2A6D4FCD6}
+	EndGlobalSection
+EndGlobal
