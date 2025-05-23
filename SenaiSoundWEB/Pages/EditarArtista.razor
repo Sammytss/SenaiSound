@@ -16,35 +16,31 @@
 				  RequiredError="Email is required!" Lines="3" />
 
 
-	<MudGrid>
-		<MudItem xs="9">
-			<MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
-				<ActivatorContent>
-					<MudFab Color="Color.Success"
-							StartIcon="@Icons.Material.Filled.Image"
-							Label="Foto de Perfil" />
-				</ActivatorContent>
-			</MudFileUpload>
-		</MudItem>
-		<MudItem xs="3">
-			<MudButton Variant="Variant.Filled"
-					   Color="Color.Warning"
-					   StartIcon="@Icons.Material.Filled.Save"
-					   Class="ml-auto"
-					   @onclick="Editar">
-				Salvar
-			</MudButton>
 
-			<MudButton Variant="Variant.Filled"
-					   @onclick="Deletar"
-					   Color="Color.Error" Class="ml-auto"
-					   StartIcon="@Icons.Material.Filled.Delete">
-				Deletar
-			</MudButton>
-		</MudItem>
+	<div class="d-flex align-center justify-space-between">
+		<MudFileUpload T="IBrowserFile" FilesChanged="UploadFiles">
+			<ActivatorContent>
+				<MudFab Color="Color.Success"
+						StartIcon="@Icons.Material.Filled.Image"
+						Label="Foto de Perfil" />
+			</ActivatorContent>
+		</MudFileUpload>
+		<div style="align-items: end">
+		<MudButton Variant="Variant.Filled"
+				   Color="Color.Warning"
+				   StartIcon="@Icons.Material.Filled.Save"
+				   @onclick="Editar">
+			Salvar
+		</MudButton>
 
-
-	</MudGrid>
+		<MudButton Variant="Variant.Filled"
+				   @onclick="Deletar"
+				   Color="Color.Error"
+				   StartIcon="@Icons.Material.Filled.Delete">
+			Deletar
+		</MudButton>
+		</div>
+	</div>
 </MudForm>
 @code {
 	private string? nome;

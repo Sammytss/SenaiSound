@@ -1,9 +1,16 @@
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Neo Sans Pro';
+    transition:all ease-in-out 1s;
 }
 
 h1:focus {
     outline: none;
+}
+.mud-typography{
+    font-family: 'Neo Sans Pro';
+}
+.d-flex{
+    margin-top: 10px;
 }
 
 a, .btn-link {

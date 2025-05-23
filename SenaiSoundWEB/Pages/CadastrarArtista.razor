@@ -1,9 +1,9 @@
 ﻿@page "/CadastrarArtista"
 @inject ArtistaAPI artistaAPI
 @inject NavigationManager navigationManager
-<PageTitle>Cadastrar Artista</PageTitle>
+<PageTitle>Cadastro de Artista</PageTitle>
 
-<MudText Typo="Typo.h3" Align="Align.Center">Cadastrar Artista</MudText>
+<MudText Typo="Typo.h3" Align="Align.Center">Cadastro de Artista</MudText>
 <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
 	<MudTextField T="string" Label="Nome Do Artista"
 				  Required="true"
@@ -24,7 +24,7 @@
 		</MudFileUpload>
 		<MudButton Variant="Variant.Filled"
 				   @onclick="Cadastrar"
-				   Color="Color.Success" Class="ml-auto">Registrar</MudButton>
+				   Color="Color.Success">Registrar</MudButton>
 	</div>
 </MudForm>
 @code {
